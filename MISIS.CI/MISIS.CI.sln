@@ -5,9 +5,14 @@ VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MISIS.CI.API", "MISIS.CI.API\MISIS.CI.API.csproj", "{3D033C14-B181-4A2C-98BC-34AB03DE3683}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MISIS.CI.Storage", "MISIS.CI.Storage\MISIS.CI.Storage.csproj", "{C39DFE0E-3BD3-4E8C-ACEB-C7856072CDEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MISIS.CI.Storage", "MISIS.CI.Storage\MISIS.CI.Storage.csproj", "{C39DFE0E-3BD3-4E8C-ACEB-C7856072CDEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MISIS.CI.Gateway", "MISIS.CI.Gateway\MISIS.CI.Gateway.csproj", "{EADA8158-901C-4592-9119-09AAD86CF4D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MISIS.CI.Gateway", "MISIS.CI.Gateway\MISIS.CI.Gateway.csproj", "{EADA8158-901C-4592-9119-09AAD86CF4D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutonItems", "SolutonItems", "{98F65C40-F7FA-431B-9F75-9986BBEBC4E4}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\dotnetcore.yml = ..\.github\workflows\dotnetcore.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
