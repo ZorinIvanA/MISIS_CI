@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Https;
 using Microsoft.Extensions.Configuration;
@@ -14,25 +15,16 @@ namespace MISIS.CI.API
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args)
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
-            return Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((context, config) =>
+            return WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((context, configurationBuilder) =>
                 {
-                    config.AddJsonFile(
+                    configurationBuilder. AddJsonFile(
                         "secret.json", false, false);
-                })
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                    webBuilder.ConfigureKestrel(o =>
-                    {
-                        o.ConfigureHttpsDefaults(o =>
-                            o.ClientCertificateMode = ClientCertificateMode.RequireCertificate);
-                    });
                 });
         }
     }
