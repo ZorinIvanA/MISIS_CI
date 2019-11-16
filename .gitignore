@@ -11,3 +11,10 @@
 /MISIS.CI/MISIS.CI.Gateway/obj
 /MISIS.CI/MISIS.CI.Storage/bin/Debug/netcoreapp3.0
 /MISIS.CI/MISIS.CI.Storage/obj
+/MISIS_CI/MISIS.CI.API/bin/Debug
+/MISIS_CI/MISIS.CI.API/obj
+/MISIS_CI/MISIS.CI.Gateway/bin/Debug
+/MISIS_CI/MISIS.CI.Gateway/obj
+/MISIS_CI/MISIS.CI.Storage/bin/Debug
+/MISIS_CI/MISIS.CI.Storage/obj
+/MISIS_CI/MISIS.CI.API/secret.json
