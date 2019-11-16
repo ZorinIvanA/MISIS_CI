@@ -14,7 +14,7 @@ jobs:
       with:
         dotnet-version: 2.2.108
     - name: Cd to proper folder
-      run: cd ../../MISIS.CI
+      run: cd ../../MISIS.CI/
     - name: ls
       run: ls -l
     - name: build something
