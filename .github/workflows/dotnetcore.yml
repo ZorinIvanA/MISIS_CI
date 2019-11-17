@@ -17,6 +17,5 @@ jobs:
         dotnet build --configuration Release  
     - name: build API container
       working-directory: MISIS.CI.API
-      run: |    
-        ls -l
+      run: |            
         docker build -t .
