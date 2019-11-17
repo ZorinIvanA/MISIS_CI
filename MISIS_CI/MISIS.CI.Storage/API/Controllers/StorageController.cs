@@ -11,7 +11,6 @@ using MISIS.CI.Storage.API.Models;
 namespace MISIS.CI.Storage.API.Controllers
 {
     [Route("api/storage")]
-    [ApiController]
     public class StorageController : ControllerBase
     {
         private IStorageLogic _storageLogic;

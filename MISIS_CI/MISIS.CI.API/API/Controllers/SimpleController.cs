@@ -7,8 +7,7 @@ using MISIS.CI.API.BusinessLogic.Interfaces;
 
 namespace MISIS.CI.API.API.Controllers
 {
-    [Route("api/simple")]
-    [ApiController]
+    [Route("api/simple")]    
     public class SimpleController : ControllerBase
     {
         private readonly ISimpleLogic _logic;

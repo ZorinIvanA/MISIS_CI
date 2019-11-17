@@ -8,7 +8,6 @@ using MISIS.CI.Gateway.BusinessLogic.Interfaces;
 namespace MISIS.CI.Gateway.API
 {
     [Route("api/interaction")]
-    [ApiController]
     public class InteractionController : ControllerBase
     {
         private readonly IInteractionLogic _interactionLogic;

@@ -13,7 +13,7 @@ namespace MISIS.CI.API.Infrastructure
 {
     public class SimpleRepository : ISimpleRepository
     {
-        private WeatherAPISettings _options;
+        private readonly WeatherAPISettings _options;
         public SimpleRepository(IOptions<WeatherAPISettings> options)
         {
             _options = options?.Value ??

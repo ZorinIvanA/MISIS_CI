@@ -20,6 +20,7 @@ namespace MISIS.CI.Gateway
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             services.AddScoped<IInteractionLogic, InteractionLogic>();
             services.AddScoped<IRemoteApiServiceRepository, RemoteApiRepository>();
             services.AddScoped<IStorageServiceRepository, StorageServiceRepository>();
@@ -29,6 +30,10 @@ namespace MISIS.CI.Gateway
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=storage}/{action=Index}/{id?}");
+            });
             app.UseHttpsRedirection();
         }
     }

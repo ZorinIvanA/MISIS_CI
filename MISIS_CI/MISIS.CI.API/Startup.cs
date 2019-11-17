@@ -1,15 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Hosting;
 using MISIS.CI.API.BusinessLogic;
 using MISIS.CI.API.BusinessLogic.Interfaces;
 using MISIS.CI.API.Infrastructure;
@@ -29,6 +21,8 @@ namespace MISIS.CI.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+
             services.AddScoped<ISimpleLogic, SimpleLogic>();
             services.AddScoped<ISimpleRepository, SimpleRepository>();
 
@@ -38,7 +32,12 @@ namespace MISIS.CI.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
-            app.UseAuthentication();
+            
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=simple}/{action=Index}/{id?}");
+            });
+            //app.UseHttpsRedirection();
         }
     }
 }
