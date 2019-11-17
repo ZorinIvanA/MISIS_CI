@@ -13,11 +13,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.108
-    - name: Cd to root
-      run: cd ../../
-    - name: Cd to Folder
-      run: cd ./MISIS_CI
-    - name: ls
-      run: ls -l
     - name: build something
-      run: dotnet build --configuration Release
+      working-directory: ../../MISIS_CI
+      run: |
+        ls -l
+        dotnet build --configuration Release
