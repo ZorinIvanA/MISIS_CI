@@ -1,21 +1,26 @@
-name: .NET Core
-
+name: MISIS DEPLOY ACTION
 on: [push]
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.108
-    - name: build something
+    - name: build solution
       working-directory: MISIS_CI
       run: |
         ls -l
         dotnet restore  
         dotnet build --configuration Release
+  deploy:
+    - name: start deploy
+      run: |
+        echo "Starting build docker"
+    - name: build API container
+      run: |
+        echo "Building container for API"
+        working-directory: MISIS.CI.API
+        docker build

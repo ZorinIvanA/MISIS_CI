@@ -1,9 +1,9 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-buster-slim AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-buster AS build
 WORKDIR /src
 COPY ["MISIS.CI.Gateway/MISIS.CI.Gateway.csproj", "MISIS.CI.Gateway/"]
 RUN dotnet restore "MISIS.CI.Gateway/MISIS.CI.Gateway.csproj"

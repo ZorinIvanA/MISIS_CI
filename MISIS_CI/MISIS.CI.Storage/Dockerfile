@@ -1,9 +1,9 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.0-buster-slim AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-buster-slim AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0-buster AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-buster AS build
 WORKDIR /src
 COPY ["MISIS.CI.Storage/MISIS.CI.Storage.csproj", "MISIS.CI.Storage/"]
 RUN dotnet restore "MISIS.CI.Storage/MISIS.CI.Storage.csproj"
