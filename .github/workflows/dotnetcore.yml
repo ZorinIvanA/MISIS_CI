@@ -16,6 +16,6 @@ jobs:
         dotnet restore  
         dotnet build --configuration Release  
     - name: build API container
-      run: |        
-        working-directory: MISIS.CI.API
+      working-directory: MISIS.CI.API
+      run: |            
         docker build
