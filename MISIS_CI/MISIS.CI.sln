@@ -11,6 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MISIS.CI.Gateway", "MISIS.C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutonItems", "SolutonItems", "{98F65C40-F7FA-431B-9F75-9986BBEBC4E4}"
 	ProjectSection(SolutionItems) = preProject
+		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		Dockerfile = Dockerfile
 		..\.github\workflows\dotnetcore.yml = ..\.github\workflows\dotnetcore.yml
 	EndProjectSection

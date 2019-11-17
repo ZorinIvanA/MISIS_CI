@@ -21,9 +21,10 @@ namespace MISIS.CI.API
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
             return WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>()
                 .ConfigureAppConfiguration((context, configurationBuilder) =>
                 {
-                    configurationBuilder. AddJsonFile(
+                    configurationBuilder.AddJsonFile(
                         "secret.json", false, false);
                 });
         }
