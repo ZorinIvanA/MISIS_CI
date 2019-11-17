@@ -14,7 +14,8 @@ jobs:
       with:
         dotnet-version: 2.2.108
     - name: build something
-      working-directory: ../../MISIS_CI
+      working-directory: MISIS_CI
       run: |
         ls -l
+        dotnet restore  
         dotnet build --configuration Release
