@@ -18,4 +18,4 @@ jobs:
     - name: build API container
       working-directory: MISIS.CI.API
       run: |            
-        docker build -t .
+        docker build -t api-container.
