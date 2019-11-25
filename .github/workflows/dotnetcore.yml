@@ -15,6 +15,6 @@ jobs:
       working-directory: MISIS_CI/MISIS.CI.API
       run: |             
         ls -l        
+        docker build -t docker.pkg.github.com/zorinivana/misis_ci/api-container:$VERSION .
         docker login docker.pkg.github.com -u ${{ secrets.username }} -p ${{ secrets.Password }}
-        docker build -t api-container:$VERSION .
-        docker push api-container:$VERSION
+        docker push docker.pkg.github.com/zorinivana/misis_ci/api-container:$VERSION
