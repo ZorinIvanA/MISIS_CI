@@ -1,4 +1,4 @@
-name: MISIS DEPLOY ACTION
+name: MISIS CI DEPLOY ACTION
 on: [push]
 jobs:
   build:
