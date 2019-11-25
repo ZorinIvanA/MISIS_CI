@@ -16,4 +16,4 @@ jobs:
       run: |             
         ls -l        
         docker build -t api-container .
-        docker push docker.pkg.github.com/ZorinIvanA/MISIS_CI/api-container:$VERSION
+        docker push docker.pkg.github.com/zorinivana/misis_ci/api-container:$VERSION
