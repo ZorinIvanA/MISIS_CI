@@ -47,8 +47,7 @@ jobs:
     - name: Deploy
       run: |
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT_ID
-        DEMO_HOME=$(mktemp -d)
-        touch $DEMO_HOME/kustomization.yaml
+        touch ./kustomization.yaml
         ls -l
         ./kustomize edit add resource secret.yaml
         ./kustomize edit add resource service.yaml
