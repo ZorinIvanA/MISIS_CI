@@ -49,6 +49,11 @@ jobs:
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT_ID
         DEMO_HOME=$(mktemp -d)
         touch $DEMO_HOME/kustomization.yaml
+        cd $DEMO_HOME
+        kustomize edit add resource secret.yaml
+        kustomize edit add resource service.yaml
+        kustomize edit add resource deployment.yaml
+        cat kustomization.yaml
         kubectl apply -f ./deployment.yaml
         kubectl rollout status deployment/weather-api
         kubectl get services -o wide
