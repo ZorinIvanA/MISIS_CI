@@ -50,8 +50,6 @@ jobs:
         DEMO_HOME=$(mktemp -d)
         touch $DEMO_HOME/kustomization.yaml
         ls -l
-        cd $DEMO_HOME
-        ls -l
         ./kustomize edit add resource secret.yaml
         ./kustomize edit add resource service.yaml
         ./kustomize edit add resource deployment.yaml
