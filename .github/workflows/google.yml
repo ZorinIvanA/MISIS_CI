@@ -47,7 +47,7 @@ jobs:
     - name: Deploy
       run: |
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT_ID
-        ./kustomize edit set image gcr.io/$GKE_PROJECT/$IMAGE:${GITHUB_SHA}
+        ./kustomize edit set image api-container:docker.pkg.github.com/zorinivana/misis_ci/api-container_$VERSION:$GITHUB_SHA
         ./kustomize build . | kubectl apply -f -
         kubectl rollout status deployment/gke-test
         kubectl get services -o wide
