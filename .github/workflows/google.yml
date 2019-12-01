@@ -47,6 +47,8 @@ jobs:
     - name: Deploy
       run: |
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT_ID
+        DEMO_HOME=$(mktemp -d)
+        touch $DEMO_HOME/kustomization.yaml
         kubectl apply -f ./deployment.yaml
         kubectl rollout status deployment/weather-api
         kubectl get services -o wide
