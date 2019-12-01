@@ -49,7 +49,6 @@ jobs:
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT_ID
         touch ./kustomization.yaml
         ls -l
-        ./kustomize edit add resource secret.yaml
         ./kustomize edit add resource service.yaml
         ./kustomize edit add resource deployment.yaml
         cat kustomization.yaml
