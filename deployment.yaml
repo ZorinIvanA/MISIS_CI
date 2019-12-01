@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: weather-api
+        app: weather
 
     spec:
       containers:
