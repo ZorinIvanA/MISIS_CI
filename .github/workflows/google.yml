@@ -47,7 +47,6 @@ jobs:
     - name: Deploy
       run: |
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT_ID
-        ./kustomize edit set image api-container:docker.pkg.github.com/zorinivana/misis_ci/api-container:$GITHUB_SHA
-        ./kustomize build . | kubectl apply -f -
-        kubectl rollout status deployment/gke-test
+        kubectl apply -f ./deployment.yaml
+        kubectl rollout status deployment/weather-api
         kubectl get services -o wide
