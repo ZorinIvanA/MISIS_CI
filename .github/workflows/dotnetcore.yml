@@ -39,20 +39,3 @@ jobs:
         docker build -t docker.pkg.github.com/zorinivana/misis_ci/storage-container:$VERSION .
         docker login docker.pkg.github.com -u ${{ secrets.username }} -p ${{secrets.GITHUB_TOKEN}}
         docker push docker.pkg.github.com/zorinivana/misis_ci/storage-container:$VERSION
-  
-  deploy:
-      on: [manual]
-      name: Setup, Build, Publish, and Deploy
-      runs-on: ubuntu-latest
-      steps:
-          # Setup gcloud CLI
-        - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-          with:
-            version: '270.0.0'
-            service_account_email: ${{ secrets.GKE_EMAIL }}
-            service_account_key: ${{ secrets.GKE_KEY }}
-            # Configure docker to use the gcloud command-line tool as a credential helper
-        - run: |
-            # Set up docker to authenticate
-            # via gcloud command-line tool.
-            gcloud auth configure-docker
