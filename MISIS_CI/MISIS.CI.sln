@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutonItems", "SolutonItem
 	ProjectSection(SolutionItems) = preProject
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		..\.github\workflows\dotnetcore.yml = ..\.github\workflows\dotnetcore.yml
+		..\.github\workflows\google.yml = ..\.github\workflows\google.yml
+		kube-secret.json = kube-secret.json
 	EndProjectSection
 EndProject
 Global

@@ -19,3 +19,4 @@
 /MISIS_CI/MISIS.CI.Storage/obj
 /MISIS_CI/MISIS.CI.API/secret.json
 /MISIS_CI/.vs/MISIS.CI/v16/Server/sqlite3
+/MISIS_CI/kube-secret.json

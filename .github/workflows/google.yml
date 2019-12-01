@@ -23,7 +23,8 @@ env:
   GITHUB_SHA: ${{ github.sha }}
   GKE_ZONE: us-central1-a
   GKE_CLUSTER:  misis-test
-  IMAGE: api
+  IMAGE: api-container
+  api-container:$VERSION
 
 jobs:
   setup-build-publish-deploy:
