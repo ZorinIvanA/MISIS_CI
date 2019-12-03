@@ -30,7 +30,7 @@ jobs:
       working-directory: MISIS_CI/MISIS.CI.API
       run: |             
         ls -l        
-        docker build -t gcr.io/$GKE_PROJECT/api-container:$GITHUB_SHA --build-arg GITHUB_SHA="$GITHUB_SHA" .        
+        docker build -t gcr.io/$GKE_PROJECT/api-container:$GITHUB_SHA .
         docker login docker.pkg.github.com -u ${{ secrets.username }} -p ${{secrets.GITHUB_TOKEN}}
         gcloud auth configure-docker 
         docker push gcr.io/$GKE_PROJECT/api-container:$GITHUB_SHA
