@@ -31,10 +31,11 @@ jobs:
         
     - name: build API container     
       working-directory: MISIS_CI/MISIS.CI.API
-      run: |             
-        ls -l        
+      run: |    
+        echo "$GKE_KEY" >> g.json
+        ls -l      
+        gcloud auth activate-service-account --key-file=g.json
         gcloud auth configure-docker 
-        gcloud auth login
         docker build -t gcr.io/"$GKE_PROJECT"/api-container:"$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" .
         docker login docker.pkg.github.com -u ${{ secrets.username }} -p ${{secrets.GITHUB_TOKEN}}
