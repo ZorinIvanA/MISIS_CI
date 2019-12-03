@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.108   
-    - name: build API container 1     
+    - name: build API container     
       working-directory: MISIS_CI/MISIS.CI.API
       run: |             
         ls -l        
