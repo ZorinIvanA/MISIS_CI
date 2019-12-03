@@ -14,7 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutonItems", "SolutonItem
 		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		..\deployment.yaml = ..\deployment.yaml
 		..\.github\workflows\dotnetcore.yml = ..\.github\workflows\dotnetcore.yml
-		..\.github\workflows\google.yml = ..\.github\workflows\google.yml
 		kube-secret.json = kube-secret.json
 		kustomization.yaml = kustomization.yaml
 		..\service.yml = ..\service.yml
