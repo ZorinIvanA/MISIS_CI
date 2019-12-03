@@ -12,22 +12,20 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest    
     env:
-        VERSION: ${{ '1.0.0' }}
-            # Setup gcloud CLI
-    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-      with:
-        version: '270.0.0'
-        service_account_email: ${{ secrets.GKE_EMAIL }}
-        service_account_key: ${{ secrets.GKE_KEY }}   
-
-    steps:
-    - uses: actions/checkout@v1
+        VERSION: ${{ '1.0.0' }} 
+    steps:    
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.108
+    - name Setup GKE
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '270.0.0'
+        service_account_email: ${{ secrets.GKE_EMAIL }}
+        service_account_key: ${{ secrets.GKE_KEY }}   
     - name: build API container 1     
       working-directory: MISIS_CI/MISIS.CI.API
       run: |             
