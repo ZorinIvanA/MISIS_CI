@@ -21,8 +21,9 @@ jobs:
       with:
         dotnet-version: 2.2.108
     - name: ls
-      run: 
+      run: |
         ls -l
+        echo $PWD
     - name: build API container     
       working-directory: MISIS_CI/MISIS.CI.API
       run: |             
