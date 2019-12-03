@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: weather-api
-        image: docker.pkg.github.com/zorinivana/misis_ci/api-container:1.0.0
+        image: gcr.io/$GKE_PROJECT/api-container:TAG
         ports:
         - containerPort: 5000
         resources:
