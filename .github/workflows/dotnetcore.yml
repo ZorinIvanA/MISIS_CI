@@ -19,13 +19,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 2.2.108
-    - name: Setup GKE
-      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-      with:
-        version: '270.0.0'
-        service_account_email: ${{ secrets.GKE_EMAIL }}
-        service_account_key: ${{ secrets.GKE_KEY }}   
+        dotnet-version: 2.2.108  
     - name: build API container 1     
       working-directory: MISIS_CI/MISIS.CI.API
       run: |             
@@ -48,7 +42,12 @@ jobs:
         docker build -t docker.pkg.github.com/zorinivana/misis_ci/storage-container:$VERSION .
         docker login docker.pkg.github.com -u ${{ secrets.username }} -p ${{secrets.GITHUB_TOKEN}}
         docker push docker.pkg.github.com/zorinivana/misis_ci/storage-container:$VERSION
-      
+    - name: Setup GKE
+      uses: actions/setup-gcloud@master
+      with:
+        version: '270.0.0'
+        service_account_email: ${{ secrets.GKE_EMAIL }}
+        service_account_key: ${{ secrets.GKE_KEY }} 
     # Set up kustomize
     - name: Set up Kustomize
       run: |
