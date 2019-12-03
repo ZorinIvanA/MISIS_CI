@@ -30,7 +30,7 @@ jobs:
         ls -l
         
     - name: build API container     
-      working-directory: /MISIS.CI.API
+      working-directory: MISIS_CI/MISIS.CI.API
       run: |             
         ls -l        
         docker build -t docker.pkg.github.com/zorinivana/misis_ci/api-container:$VERSION .
