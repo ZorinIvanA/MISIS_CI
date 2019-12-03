@@ -1,5 +1,8 @@
 name: MISIS CI DEPLOY ACTION
-on: [push]
+on: 
+  push:
+    branches:
+    - master
 env:
   GKE_PROJECT: ${{ secrets.GKE_PROJECT }}
   GKE_EMAIL: ${{ secrets.GKE_EMAIL }}
