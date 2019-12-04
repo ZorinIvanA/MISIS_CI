@@ -34,6 +34,7 @@ jobs:
       run: |    
         echo ${{ secrets.GKE_KEY }}
         echo ${{ secrets.GKE_KEY }} >> g.json
+        echo "$(cat g.json)"
         ls -l      
         gcloud auth activate-service-account misis-kube-apd@nodal-triumph-258404.iam.gserviceaccount.com  --key-file=g.json
         gcloud auth configure-docker 
