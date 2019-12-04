@@ -29,6 +29,9 @@ jobs:
         echo $PWD
         ls -l
         
+    - name: Connect to GKE
+      run: |
+        gcloud iam service-accounts keys create g.json --iam-account=Misis_kube_apd      
     - name: build API container     
       working-directory: MISIS_CI/MISIS.CI.API
       run: |    
