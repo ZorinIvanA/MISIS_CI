@@ -29,11 +29,14 @@ jobs:
         echo $PWD
         ls -l
         
+    - name: Connect to GKE
+      run: |
+        gcloud iam service-accounts keys create g.json --iam-account=misis-kube-apd@nodal-triumph-258404.iam.gserviceaccount.com
+               
     - name: build API container     
       working-directory: MISIS_CI/MISIS.CI.API
       run: |    
-        echo "$GKE_KEY"
-        echo "$GKE_KEY" >> g.json
+        cat ${{ secrets.GKE_KEY }} >> g.json      
         ls -l      
         gcloud auth activate-service-account misis-kube-apd@nodal-triumph-258404.iam.gserviceaccount.com  --key-file=g.json
         gcloud auth configure-docker 
