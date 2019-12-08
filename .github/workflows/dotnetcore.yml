@@ -36,7 +36,8 @@ jobs:
     - name: build API container     
       working-directory: MISIS_CI/MISIS.CI.API
       run: |    
-        cat ${{ secrets.GKE_KEY }} >> g.json      
+        echo ${{ secrets.client_x509_cert_url }} >> g.json   
+        cat g.json  
         ls -l      
         gcloud auth activate-service-account misis-kube-apd@nodal-triumph-258404.iam.gserviceaccount.com  --key-file=g.json
         gcloud auth configure-docker 
