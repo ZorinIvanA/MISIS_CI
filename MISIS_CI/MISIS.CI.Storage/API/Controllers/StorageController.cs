@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Google.Cloud.Diagnostics.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,11 +19,11 @@ namespace MISIS.CI.Storage.API.Controllers
     public class StorageController : ControllerBase
     {
         private readonly IStorageLogic _storageLogic;
-        private readonly ITracer _tracer;
+        private readonly IManagedTracer _tracer;
         private readonly ILogger<StorageController> _logger;
 
         public StorageController(IStorageLogic storageLogic,
-            ITracer tracer, ILogger<StorageController> logger)
+            IManagedTracer tracer, ILogger<StorageController> logger)
         {
             _storageLogic = storageLogic ?? throw new ArgumentNullException(nameof(storageLogic));
             _tracer = tracer ?? throw new ArgumentNullException(nameof(tracer));
@@ -33,14 +35,11 @@ namespace MISIS.CI.Storage.API.Controllers
             [FromBody]WeatherForecastModel model,
             CancellationToken cancellationToken)
         {
-            var builder = _tracer.BuildSpan("GetStorageData");
-            using (var scope = builder.StartActive(true))
+            using (_tracer.StartSpan("save"))
             {
                 try
                 {
-                    var span = scope.Span;
-                    var log = $"Getting data with params {model}";
-                    span.Log(log);
+                    var traceHeaderHandler = new TraceHeaderPropagatingHandler(() => _tracer);
 
                     await _storageLogic.SaveToFileAsync(model, cancellationToken);
                     return Ok();
