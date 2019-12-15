@@ -27,15 +27,9 @@ jobs:
     - name: build API container     
       working-directory: MISIS_CI/MISIS.CI.API
       run: |    
-        echo ${{ secrets.client_x509_cert_url }} >> g.json   
-        cat g.json  
-        ls -l      
-        gcloud auth activate-service-account misis-kube-apd@nodal-triumph-258404.iam.gserviceaccount.com  --key-file=g.json
-        gcloud auth configure-docker 
-        docker build -t gcr.io/"$GKE_PROJECT"/api-container:"$GITHUB_SHA" \
-          --build-arg GITHUB_SHA="$GITHUB_SHA" .
+        docker build -t docker.pkg.github.com/zorinivana/misis_ci/api-container:$VERSION .
         docker login docker.pkg.github.com -u ${{ secrets.username }} -p ${{secrets.GITHUB_TOKEN}}
-        docker push gcr.io/"$GKE_PROJECT"/api-container:"$GITHUB_SHA"        
+        docker push docker.pkg.github.com/zorinivana/misis_ci/api-container:$VERSION
     - name: build Gateway container      
       working-directory: MISIS_CI/MISIS.CI.Gateway
       run: |             
