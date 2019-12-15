@@ -14,6 +14,10 @@
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "environmentVariables": {
+        "JAEGER_AGENT_PORT": "6831",
+        "JAEGER_SAMPLER_TYPE": "const",
+        "JAEGER_SERVICE_NAME": "MISIS.CI.Storage",
+        "JAEGER_AGENT_HOST": "localhost",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
