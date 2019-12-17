@@ -1,18 +1,13 @@
-using System;
 using Google.Cloud.Diagnostics.AspNetCore;
 using Google.Cloud.Diagnostics.Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Logging;
 using MISIS.CI.API.BusinessLogic;
 using MISIS.CI.API.BusinessLogic.Interfaces;
 using MISIS.CI.API.Infrastructure.Settings;
 using MISIS.CI.Storage.BusinessLogic.Interfaces;
 using MISIS.CI.Storage.Infrastructure;
-using OpenTracing;
-using OpenTracing.Util;
 using Stackdriver;
 
 namespace MISIS.CI.Storage

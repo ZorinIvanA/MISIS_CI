@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MISIS.CI.API.BusinessLogic.Interfaces;
 using MISIS.CI.Storage.API.Models;
-using OpenTracing;
 
 namespace MISIS.CI.Storage.API.Controllers
 {
@@ -39,17 +35,31 @@ namespace MISIS.CI.Storage.API.Controllers
             {
                 try
                 {
+                    //These two lines are for example
                     var traceHeaderHandler = new TraceHeaderPropagatingHandler(() => _tracer);
+                    var response = TraceOutgoing(traceHeaderHandler);
 
                     await _storageLogic.SaveToFileAsync(model, cancellationToken);
                     return Ok();
                 }
-
                 catch (Exception e)
                 {
-                    _logger.LogError(e, "Error");
+                    _logger.LogError(e, "Service Error, attention!!!!");
                     return StatusCode(StatusCodes.Status500InternalServerError,
                         e.Message);
+                }
+            }
+        }
+
+        public async Task<string> TraceOutgoing(TraceHeaderPropagatingHandler traceHeaderHandler)
+        {
+            // Add a handler to trace outgoing requests and to propagate the trace header.
+            using (var httpClient = new HttpClient(traceHeaderHandler))
+            {
+                string url = "https://www.googleapis.com/discovery/v1/apis";
+                using (var response = await httpClient.GetAsync(url))
+                {
+                    return await response.Content.ReadAsStringAsync();
                 }
             }
         }
